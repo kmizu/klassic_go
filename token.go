@@ -2,6 +2,11 @@ package parser
 
 type TokenType int
 
+type Token struct {
+  kind TokenType
+  value interface{}
+}
+
 type Tokenizer struct {
   input string
   position int
@@ -13,19 +18,64 @@ const (
   TOKEN_INT TokenType = iota
   TOKEN_FLAOT
   TOKEN_IDENT
-  TOKEN_IF
   TOKEN_LPAREN
   TOKEN_RPAREN
   TOKEN_LBRACE
   TOKEN_RBRACE
   TOKEN_LBRACKET
   TOKEN_RBRACKET
-  TOKEN_WHITE_SPACES
+  TOKEN_TERMINATOR
+  TOKEN_SEPARATOR
+  TOKEN_SEMICOLON
+  TOKEN_LT
+  TOKEN_GT
+  TOKEN_LTE
+  TOKEN_GTE
+  TOKEN_MAP_OPEN
+  TOKEN_SET_OPEN
+  TOKEN_PLUS
+  TOKEN_MINUS
+  TOKEN_STAR
+  TOKEN_SLASH
+  TOKEN_IF
+  TOKEN_ELSE
+  TOKEN_WHILE
+  TOKEN_FOREACH
+  TOKEN_TRUE
+  TOKEN_FALSE
+  TOKEN_IN
+  TOKEN_COMMA
+  TOKEN_DOT
+  TOKEN_CLASS
+  TOKEN_DEF
+  TOKEN_MUTABLE
+  TOKEN_CLEANUP
+  TOKEN_VAL
+  TOKEN_EQ
+  TOKEN_PLUSEQ
+  TOKEN_MINUSEQ
+  TOKEN_STAREQ
+  TOKEN_SLASHEQ
+  TOKEN_COLONGT
+  TOKEN_EQEQ
+  TOKEN_ARROW1
+  TOKEN_ARROW2
+  TOKEN_COLON
+  TOKEN_NEW
+  TOKEN_QUESTION
+  TOKEN_AMP2
+  TOKEN_BAR2
+  TOKEN_BAR
+  TOKEN_BLOCK_COMMENT
+  TOKEN_LINE_COMMENT
+  TOKEN_SPACING
+  TOKEN_ERROR
 )
 
 func NewTokenizer(input string) *Tokenizer {
   return &Tokenizer{input, 0, 1, 1}
 }
 
-func (self Tokenizer) NextToken() {
+func (self Tokenizer) NextToken() Token {
+  return Token{TOKEN_ERROR, nil}
 }
